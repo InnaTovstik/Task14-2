@@ -18,10 +18,7 @@ public class Threads {
                 from = i * step;
                 to = (i * step) + step - 1;
             }
-                System.out.println("from = " + from + " to = " + to);
-                Thread t = new Thread(new Writer(i * step,
-                        ((i * step) + step) - 1,
-                        5));
+                Thread t = new Thread(new Writer(from, to, 5));
                 t.setName("Thread " + i);
                 t.start();
                 arrayList.add(t);

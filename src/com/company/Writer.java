@@ -22,26 +22,22 @@ public class Writer implements Runnable {
     @Override
     public void run() {
 
-        ArrayList<String> arrayList = new ArrayList<>();
         String a = "Fizz";
         String b = "Buzz";
         try {
+            ArrayList<String> arrayList = new ArrayList<>();
             for (int i = from; i < to; i++) {
                 Thread.sleep(latency);
                 if ((i % 3) == 0 && (i % 5) == 0) {
                     arrayList.add(a + b);
-                    System.out.println("[" + i + "]= " + (a+b));
                 } else {
                     if (i % 3 == 0) {
                         arrayList.add(a);
-                        System.out.println("[" + i + "]= " + a);
                     } else {
                         if ((i % 5) == 0) {
                             arrayList.add(b);
-                            System.out.println("[" + i + "]= " + b);
                         } else {
                             arrayList.add(String.valueOf(i));
-                            System.out.println("[" + i + "]= " + i);
                         }
                     }
                 }
