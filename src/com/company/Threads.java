@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Threads {
 
@@ -9,7 +10,7 @@ public class Threads {
             System.out.println("Количество элементов = " + elements + ", количество потоков = " + countTreads);
             int from;
             int to;
-            ArrayList<Thread> arrayList = new ArrayList<>();
+           List<Thread> list = new ArrayList<>();
 
             int step = elements / countTreads;
             for (int i = 0; i < countTreads; i++) {
@@ -23,9 +24,9 @@ public class Threads {
                 Thread t = new Thread(new Writer(from, to, 5));
                 t.setName("Thread " + i);
                 t.start();
-                arrayList.add(t);
+               list.add(t);
             }
-            for (Thread thread : arrayList)
+            for (Thread thread : list)
                 thread.join();
         } catch (InterruptedException e) {
             e.printStackTrace();

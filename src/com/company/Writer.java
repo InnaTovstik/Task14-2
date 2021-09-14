@@ -7,6 +7,7 @@ package com.company;
 // Сравнить время выполнения программы с одним потоком и с несколькими. Количество потоков на ваше усмотрение.
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Writer implements Runnable {
     int from;
@@ -25,21 +26,17 @@ public class Writer implements Runnable {
         String a = "Fizz";
         String b = "Buzz";
         try {
-            ArrayList<String> arrayList = new ArrayList<>();
+            List<String> list = new ArrayList<>();
             for (int i = from; i < to; i++) {
                 Thread.sleep(latency);
                 if ((i % 3) == 0 && (i % 5) == 0) {
-                    arrayList.add(a + b);
+                    list.add(a + b);
+                } else if (i % 3 == 0) {
+                    list.add(a);
+                } else if ((i % 5) == 0) {
+                    list.add(b);
                 } else {
-                    if (i % 3 == 0) {
-                        arrayList.add(a);
-                    } else {
-                        if ((i % 5) == 0) {
-                            arrayList.add(b);
-                        } else {
-                            arrayList.add(String.valueOf(i));
-                        }
-                    }
+                    list.add(String.valueOf(i));
                 }
             }
         } catch (InterruptedException e) {
